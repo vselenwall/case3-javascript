@@ -1,59 +1,63 @@
-
-
-// selectors 
+// All selectors
 
 const inputField = document.getElementById('inputField');
 const toDoList = document.getElementById('todolist');
 const addThingButton = document.getElementById('addThing');
 
+// All eventlisteners
+
 addThingButton.addEventListener("click", addTodo);
 toDoList.addEventListener('click', doneTrash);
-//toDoList.addEventListener('dbclick', editItem);
+
+// Function todo-event
 
 function addTodo(event){
     
-    // prevent submit
+    // Prevent submitting
     event.preventDefault();
 
-    // todo-div
+    // Create todo-div
     const todoDiv = document.createElement('div');
     todoDiv.classList.add("todo");
 
-    // create li 
+    // Create li and li-item
     const newTodo = document.createElement('li');
     newTodo.innerText = inputField.value;
     newTodo.classList.add('todo-item');
     todoDiv.appendChild(newTodo);
 
-    // checkmark button
+    // Create checkmark button
     const doneButton = document.createElement('button');
     doneButton.innerHTML = '<i class="far fa-check-circle"></i>';
     doneButton.classList.add("done-button");
     todoDiv.appendChild(doneButton);
 
-    // trash button
+    // Create trash button
     const trashButton = document.createElement('button');
     trashButton.innerHTML = '<i class="far fa-trash-alt"></i>';
     trashButton.classList.add("trash-button");
     todoDiv.appendChild(trashButton);
 
-    // append to list
+    // Append ul to todo-div
     toDoList.appendChild(todoDiv);
 
-    //clear input value
+    // Clear input
     inputField.value="";
 };
+
+
+// Function for done and trash buttons
 
 function doneTrash(e){
     const item = e.target;
     
-    //delete todo
+    // Delete todo-item
     if(item.classList[0] === 'trash-button') {
         const todo = item.parentElement;
         todo.remove();
     }
 
-    // check mark
+    // Mark todo-item with done button
     if(item.classList[0] === 'done-button') {
         const todo = item.parentElement;
         todo.classList.toggle("completed");
