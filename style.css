@@ -72,7 +72,7 @@ form button:hover {
     margin: 1rem;
 }
 
-.trash-button, .done-button {
+.trash-button, .done-button, .moveup-button, .movedown-button {
     background:rgb(122, 56, 44);
     color: rgb(253, 253, 253);
     border: none;
@@ -93,7 +93,9 @@ form button:hover {
 }
 
 .fa-trash-alt, 
-.fa-check-circle {
+.fa-check-circle,
+.fa-chevron-up
+.fa-chevron-down {
     pointer-events: none;
 }
 
