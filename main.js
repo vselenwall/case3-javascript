@@ -7,7 +7,7 @@ const addThingButton = document.getElementById('addThing');
 // All eventlisteners
 
 addThingButton.addEventListener('click', addTodo);
-toDoList.addEventListener('click', doneTrashMove);
+toDoList.addEventListener('click', doneTrash);
 
 // Function todo-event
 
@@ -26,7 +26,6 @@ function addTodo(event){
     newTodo.classList.add('todo-item');
     todoDiv.appendChild(newTodo);
 
-
     // Create checkmark button
     const doneButton = document.createElement('button');
     doneButton.innerHTML = '<i class="far fa-check-circle"></i>';
@@ -39,11 +38,17 @@ function addTodo(event){
     trashButton.classList.add("trash-button");
     todoDiv.appendChild(trashButton);
 
-    // Create move button
-    const moveButton = document.createElement('button');
-    moveButton.innerHTML = '<i class="fas fa-arrows-alt-v"></i>';
-    trashButton.classList.add("move-button");
-    todoDiv.appendChild(moveButton);
+    // Create moveup button
+    const moveUpButton = document.createElement('button');
+    moveUpButton.innerHTML = '<i class="fas fa-chevron-up"></i>';
+    moveUpButton.classList.add("moveup-button");
+    todoDiv.appendChild(moveUpButton);
+
+    // Create movedown button
+    const moveDownButton = document.createElement('button');
+    moveDownButton.innerHTML = '<i class="fas fa-chevron-down"></i>';
+    moveDownButton.classList.add("movedown-button");
+    todoDiv.appendChild(moveDownButton);
 
     // Append ul to todo-div
     toDoList.appendChild(todoDiv);
@@ -55,36 +60,63 @@ function addTodo(event){
 
 // Function for done and trash buttons
 
-function doneTrashMove(e){
+function doneTrash(e){
     const item = e.target;
     
     // Delete todo-item
-    if(item.classList[i] === 'trash-button') {
+    if(item.classList[0] === 'trash-button') {
         const todo = item.parentElement;
         todo.remove();
     }
 
     // Mark todo-item with done button
-    if(item.classList[i] === 'done-button') {
+    if(item.classList[0] === 'done-button') {
         const todo = item.parentElement;
         todo.classList.toggle("completed");
     }
-
-    // Move up and down button
-    if(item.classList[i] === 'move-button') {
-        const todo = item.parentElement;
-        const input = document.createElement('input');
-        input.type = 'text';
-        input.value = todo.textContent;
-        li.insertBefore(input, todo);
-    }
-};
+    };
 
 
 
-for (var i = 0; i < items.length; i++) {
+/* for (var i = 0; i < items.length; i++) {
     tab.push(items[i].innerHTML);
-};
+}; */
     
+// Function for "change direction"
+
+document.getElementById("todolist").addEventListener("click", function (event) {
+    if (event.target.className === 'moveup-button') {
+        move('up', event.target.parentElement)
+    }
+    else if (event.target.className === 'movedown-button') {
+        move('down', event.target.parentElement)
+    }
+    else {
+        // ingenting
+    }
+})
+
+function move(direction, elementToMove) {
+    let listItems = document.getElementsByClassName("todo")
+    let place
+
+    for (let i = 0; i < listItems.length; i++) {
+
+        if (elementToMove === listItems[i]) {
+            if (direction === 'up') {
+                place = i - 1
+            }
+            else {
+                place = i + 2
+            }
+        }
+        else {
+            // ingenting
+        }
+    }
+
+    document.getElementById("todolist").insertBefore(elementToMove, listItems[place])
+}
+
 
    
