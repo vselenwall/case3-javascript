@@ -122,15 +122,16 @@ function move(direction, elementToMove) {
 
 // Function for edit
 
-function edit(e) {
-    const item = e.target;
+function edit() {
+    let newField = document.createElement('input');
+    newField.setAttribute("type", "text");
+    document.body.appendChild(newField);
 
-    // Edit todo item
-    if (item.classList[0] === 'edit-button') {
-        console.log('hej');
-
-    }
-};
+    let newFieldButton = document.createElement('button');
+    document.body.appendChild(newFieldButton);
+    newFieldButton.classList.add("newfield-button");
+    newFieldButton.innerHTML = '<i class="fas fa-check"></i>';
+  }
 
 // Require text inside form
 
