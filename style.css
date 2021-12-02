@@ -72,7 +72,7 @@ form button:hover {
     margin: 1rem;
 }
 
-.trash-button, .done-button, .moveup-button, .movedown-button {
+/*.trash-button, .done-button, .moveup-button, .movedown-button {
     background:rgb(122, 56, 44);
     color: rgb(253, 253, 253);
     border: none;
@@ -81,21 +81,41 @@ form button:hover {
     font-size: 1rem;
     font-family: 'Bitter', serif;
     border-radius: 0 0.5rem 0.5rem 0;
+}*/
+
+.moveup-button, .movedown-button, .trash-button, .done-button, .edit-button {
+    color: black;
+    font-size: 0.8rem;
+    padding: 0.5rem;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
 }
 
-.trash-button:hover, .done-button:hover {
+.trash-button:hover, 
+.done-button:hover, 
+.movedown-button:hover, 
+.moveup-button:hover, 
+.edit-button:hover {
     opacity: 90%;
+    background-color: #434b2d;
+    color: white;
+    transition: all 0.3s ease;
 }
 
 .done-button {
     border-radius: 0;
-    background-color: rgb(83, 114, 83);
+}
+
+.trash-button {
+    margin-right: 0.5rem;
 }
 
 .fa-trash-alt, 
 .fa-check-circle,
-.fa-chevron-up
-.fa-chevron-down {
+.fa-chevron-up,
+.fa-chevron-down,
+.fa-pencil-alt {
     pointer-events: none;
 }
 
