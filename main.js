@@ -8,7 +8,7 @@ const addThingButton = document.getElementById('addThing');
 
 addThingButton.addEventListener('click', addTodo);
 toDoList.addEventListener('click', doneTrash);
-toDoList.addEventListener('click', edit);
+//toDoList.addEventListener('click', edit);
 
 // Function todo-event
 
@@ -26,6 +26,12 @@ function addTodo(event) {
     newTodo.innerText = inputField.value;
     newTodo.classList.add('todo-item');
     todoDiv.appendChild(newTodo);
+
+    /*//Create p-element inside li-item
+    const newP = document.createElement('p');
+    newP.innerText = inputField.value;
+    newP.classList.add("p-test");
+    newTodo.appendChild(newP);*/
 
     // Create moveup button
     const moveUpButton = document.createElement('button');
@@ -81,12 +87,14 @@ function doneTrash(e) {
         const todo = item.parentElement;
         todo.classList.toggle("completed");
     }
+
+    if(item.classList[0] === 'edit-button') {
+        const todo = item.parentElement;
+        edit()
+    }
+
 };
 
-
-/* for (var i = 0; i < items.length; i++) {
-    tab.push(items[i].innerHTML);
-}; */
 
 // Function for "change direction"
 
@@ -123,6 +131,7 @@ function move(direction, elementToMove) {
 // Function for edit
 
 function edit() {
+    
     let newField = document.createElement('input');
     newField.setAttribute("type", "text");
     document.body.appendChild(newField);
@@ -131,15 +140,8 @@ function edit() {
     document.body.appendChild(newFieldButton);
     newFieldButton.classList.add("newfield-button");
     newFieldButton.innerHTML = '<i class="fas fa-check"></i>';
-  }
 
-// Require text inside form
+}
 
 
-function formInput() {
-    if(inputField === '""') {
-        console.log('lägg till task');
-    }
 
-    addThingButton.appendChild(inputField);
-};
