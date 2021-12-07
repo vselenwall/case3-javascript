@@ -25,6 +25,7 @@ function addTodo(event) {
     const newTodo = document.createElement('li');
     newTodo.innerText = inputField.value;
     newTodo.classList.add('todo-item');
+    newTodo.contentEditable;
     todoDiv.appendChild(newTodo);
 
     /*//Create p-element inside li-item
@@ -68,6 +69,27 @@ function addTodo(event) {
 
     // Clear input
     inputField.value = "";
+
+    /*var x = document.getElementById('newTodo');
+    if (x.contentEditable == "true") {
+      x.contentEditable = "false";
+      button.innerHTML = "Enable content of p to be editable!";
+    } else {
+      x.contentEditable = "true";
+      button.innerHTML = "Disable content of p to be editable!";
+    }*/
+
+    todo-item.addEventListener('click', editFunction)
+    function editFunction() {
+        let edit = document.getElementsByClassName('todo-item');
+    if (edit === "true") {
+      edit.contentEditable = "true";
+    } else {
+      edit.contentEditable = "false";
+    }
+        
+}
+
 };
 
 
@@ -88,12 +110,14 @@ function doneTrash(e) {
         todo.classList.toggle("completed");
     }
 
+    /* // Make edit field appear
     if(item.classList[0] === 'edit-button') {
         const todo = item.parentElement;
         edit()
-    }
+    } */
 
 };
+
 
 
 // Function for "change direction"
@@ -130,7 +154,7 @@ function move(direction, elementToMove) {
 
 // Function for edit
 
-function edit() {
+/* function edit(event) {
     
     let newField = document.createElement('input');
     newField.setAttribute("type", "text");
@@ -140,8 +164,51 @@ function edit() {
     document.body.appendChild(newFieldButton);
     newFieldButton.classList.add("newfield-button");
     newFieldButton.innerHTML = '<i class="fas fa-check"></i>';
-
 }
 
+*/
 
+/* function myFunction(button) {
+    var x = document.getElementById("myP");
+    if (x.contentEditable == "true") {
+      x.contentEditable = "false";
+      button.innerHTML = "Enable content of p to be editable!";
+    } else {
+      x.contentEditable = "true";
+      button.innerHTML = "Disable content of p to be editable!";
+    }
+  } */
+
+
+//event.target.parentelement.sedan appendchild
+// child [0] html-collection
+
+// VALIDERING
+
+let lösenRegex = /((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{8,64})/
+
+// console.log('regexSvar', regexSvar)
+
+/*
+const testaLösenord = () => {
+    let senasteLösenordet = document.getElementById("frånInput").value
+    let regexSvar = lösenRegex.test(senasteLösenordet)
+    console.log('senasteLösenordet', senasteLösenordet)
+
+    if (regexSvar) {
+        console.log('bra lösenord')
+        let element = document.createElement("h2");
+        let text = senasteLösenordet + "är ett bra lösenord";
+        element.append(text);
+        document.body.appendChild(element);
+    }
+    else {
+        console.log('dåligt lösenord')
+        let element = document.createElement("h2");
+        let text = senasteLösenordet + "är ett dåligt lösenord";
+        element.append(text);
+        document.body.appendChild(element);
+    }        
+}
+*/
 
