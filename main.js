@@ -21,58 +21,54 @@ function addTodo(event) {
     todoDiv.classList.add("todo");
 
 
-    if (inputField.value != ""){
-    // Create li and li-item
-    const newTodo = document.createElement('li');
-    newTodo.innerText = inputField.value;
-    newTodo.classList.add('todo-item');
-    newTodo.contentEditable = true;
-    todoDiv.appendChild(newTodo);
+    if (inputField.value != "") {
+        // Create li and li-item
+        const newTodo = document.createElement('li');
+        newTodo.innerText = inputField.value;
+        newTodo.classList.add('todo-item');
+        newTodo.contentEditable = true;
+        todoDiv.appendChild(newTodo);
 
-    // Create moveup button
-    const moveUpButton = document.createElement('button');
-    moveUpButton.innerHTML = '<i class="fas fa-chevron-up"></i>';
-    moveUpButton.classList.add("moveup-button");
-    todoDiv.appendChild(moveUpButton);
+        // Create moveup button
+        const moveUpButton = document.createElement('button');
+        moveUpButton.innerHTML = '<i class="fas fa-chevron-up"></i>';
+        moveUpButton.classList.add("moveup-button");
+        todoDiv.appendChild(moveUpButton);
 
-    // Create movedown button
-    const moveDownButton = document.createElement('button');
-    moveDownButton.innerHTML = '<i class="fas fa-chevron-down"></i>';
-    moveDownButton.classList.add("movedown-button");
-    todoDiv.appendChild(moveDownButton);
+        // Create movedown button
+        const moveDownButton = document.createElement('button');
+        moveDownButton.innerHTML = '<i class="fas fa-chevron-down"></i>';
+        moveDownButton.classList.add("movedown-button");
+        todoDiv.appendChild(moveDownButton);
 
-    // Create checkmark button
-    const doneButton = document.createElement('button');
-    doneButton.innerHTML = '<i class="far fa-check-circle"></i>';
-    doneButton.classList.add("done-button");
-    todoDiv.appendChild(doneButton);
+        // Create checkmark button
+        const doneButton = document.createElement('button');
+        doneButton.innerHTML = '<i class="far fa-check-circle"></i>';
+        doneButton.classList.add("done-button");
+        todoDiv.appendChild(doneButton);
 
-    // Create edit button
-    const editButton = document.createElement('button');
-    editButton.innerHTML = '<i class="fas fa-pencil-alt"></i>';
-    editButton.classList.add("edit-button");
-    todoDiv.appendChild(editButton);
+        // Create edit button
+        const editButton = document.createElement('button');
+        editButton.innerHTML = '<i class="fas fa-pencil-alt"></i>';
+        editButton.classList.add("edit-button");
+        todoDiv.appendChild(editButton);
 
-    // Create trash button
-    const trashButton = document.createElement('button');
-    trashButton.innerHTML = '<i class="far fa-trash-alt"></i>';
-    trashButton.classList.add("trash-button");
-    todoDiv.appendChild(trashButton);
+        // Create trash button
+        const trashButton = document.createElement('button');
+        trashButton.innerHTML = '<i class="far fa-trash-alt"></i>';
+        trashButton.classList.add("trash-button");
+        todoDiv.appendChild(trashButton);
 
-    // Append ul to todo-div
-    toDoList.appendChild(todoDiv);
+        // Append ul to todo-div
+        toDoList.appendChild(todoDiv);
 
- }  else {
-
-
- }
-
+    } else {}
     // Clear input
     inputField.value = "";
 
+
+
 };
-
-
 
 
 // Function for done and trash buttons
@@ -91,12 +87,6 @@ function doneTrash(e) {
         const todo = item.parentElement;
         todo.classList.toggle("completed");
     }
-
-    /* // Make edit field appear
-    if(item.classList[0] === 'edit-button') {
-        const todo = item.parentElement;
-        edit()
-    } */
 
 };
 
@@ -141,9 +131,9 @@ function validateInput() {
 
     let text = document.getElementById("text");
 
-    if(inputField.value === "") {
+    if (inputField.value === "") {
         let validateMessage = document.createElement('text');
-        validateMessage.innerHTML = 'Nothing plans for today? Sounds great.';
+        validateMessage.innerHTML = 'No plans for today? Sounds great.';
         validateMessage.classList.add("validate-message");
         text.appendChild(validateMessage);
 
@@ -152,11 +142,8 @@ function validateInput() {
     } else {
 
         console.log('ok');
-        if(text) {
+        if (text) {
             //text.remove();
         }
     }
 };
-
-
-
