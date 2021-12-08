@@ -123,3 +123,14 @@ form button:hover {
     background-color: #a8bd88;
     opacity: 50%;
 }
+
+#text { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+
+}
+
+
+

@@ -1,14 +1,13 @@
-// All selectors
+// Selectors
 
 const inputField = document.getElementById('inputField');
 const toDoList = document.getElementById('todolist');
 const addThingButton = document.getElementById('addThing');
 
-// All eventlisteners
+// Eventlisteners
 
-addThingButton.addEventListener('click', addTodo);
+addThingButton.addEventListener('click', addTodo, validateInput);
 toDoList.addEventListener('click', doneTrash);
-//toDoList.addEventListener('click', edit);
 
 // Function todo-event
 
@@ -21,18 +20,14 @@ function addTodo(event) {
     const todoDiv = document.createElement('div');
     todoDiv.classList.add("todo");
 
+
+    if (inputField.value != ""){
     // Create li and li-item
     const newTodo = document.createElement('li');
     newTodo.innerText = inputField.value;
     newTodo.classList.add('todo-item');
-    newTodo.contentEditable;
+    newTodo.contentEditable = true;
     todoDiv.appendChild(newTodo);
-
-    /*//Create p-element inside li-item
-    const newP = document.createElement('p');
-    newP.innerText = inputField.value;
-    newP.classList.add("p-test");
-    newTodo.appendChild(newP);*/
 
     // Create moveup button
     const moveUpButton = document.createElement('button');
@@ -67,30 +62,17 @@ function addTodo(event) {
     // Append ul to todo-div
     toDoList.appendChild(todoDiv);
 
+ }  else {
+
+
+ }
+
     // Clear input
     inputField.value = "";
 
-    /*var x = document.getElementById('newTodo');
-    if (x.contentEditable == "true") {
-      x.contentEditable = "false";
-      button.innerHTML = "Enable content of p to be editable!";
-    } else {
-      x.contentEditable = "true";
-      button.innerHTML = "Disable content of p to be editable!";
-    }*/
-
-    todo-item.addEventListener('click', editFunction)
-    function editFunction() {
-        let edit = document.getElementsByClassName('todo-item');
-    if (edit === "true") {
-      edit.contentEditable = "true";
-    } else {
-      edit.contentEditable = "false";
-    }
-        
-}
-
 };
+
+
 
 
 // Function for done and trash buttons
@@ -152,63 +134,29 @@ function move(direction, elementToMove) {
     document.getElementById("todolist").insertBefore(elementToMove, listItems[place])
 }
 
-// Function for edit
-
-/* function edit(event) {
-    
-    let newField = document.createElement('input');
-    newField.setAttribute("type", "text");
-    document.body.appendChild(newField);
-
-    let newFieldButton = document.createElement('button');
-    document.body.appendChild(newFieldButton);
-    newFieldButton.classList.add("newfield-button");
-    newFieldButton.innerHTML = '<i class="fas fa-check"></i>';
-}
-
-*/
-
-/* function myFunction(button) {
-    var x = document.getElementById("myP");
-    if (x.contentEditable == "true") {
-      x.contentEditable = "false";
-      button.innerHTML = "Enable content of p to be editable!";
-    } else {
-      x.contentEditable = "true";
-      button.innerHTML = "Disable content of p to be editable!";
-    }
-  } */
-
-
-//event.target.parentelement.sedan appendchild
-// child [0] html-collection
 
 // VALIDERING
 
-let lösenRegex = /((?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[\W]).{8,64})/
+function validateInput() {
 
-// console.log('regexSvar', regexSvar)
+    let text = document.getElementById("text");
 
-/*
-const testaLösenord = () => {
-    let senasteLösenordet = document.getElementById("frånInput").value
-    let regexSvar = lösenRegex.test(senasteLösenordet)
-    console.log('senasteLösenordet', senasteLösenordet)
+    if(inputField.value === "") {
+        let validateMessage = document.createElement('text');
+        validateMessage.innerHTML = 'Nothing plans for today? Sounds great.';
+        validateMessage.classList.add("validate-message");
+        text.appendChild(validateMessage);
 
-    if (regexSvar) {
-        console.log('bra lösenord')
-        let element = document.createElement("h2");
-        let text = senasteLösenordet + "är ett bra lösenord";
-        element.append(text);
-        document.body.appendChild(element);
+        console.log('wrong');
+
+    } else {
+
+        console.log('ok');
+        if(text) {
+            //text.remove();
+        }
     }
-    else {
-        console.log('dåligt lösenord')
-        let element = document.createElement("h2");
-        let text = senasteLösenordet + "är ett dåligt lösenord";
-        element.append(text);
-        document.body.appendChild(element);
-    }        
-}
-*/
+};
+
+
 
