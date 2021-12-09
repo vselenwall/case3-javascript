@@ -26,7 +26,7 @@ function addTodo(event) {
         const newTodo = document.createElement('li');
         newTodo.innerText = inputField.value;
         newTodo.classList.add('todo-item');
-        newTodo.contentEditable = true;
+        //newTodo.contentEditable = true;
         todoDiv.appendChild(newTodo);
 
         // Create moveup button
@@ -88,6 +88,12 @@ function doneTrash(e) {
         todo.classList.toggle("completed");
     }
 
+    // Edit content
+    if (item.classList[0] === 'edit-button') {
+        const todo = item.parentElement;
+        todo.contentEditable = true;
+    }    
+
 };
 
 
@@ -148,14 +154,9 @@ function validateInput() {
     }
 };
 
-// BUTTON - EDIT FUNCTION 
 
-document.getElementById("todolist").addEventListener("click", function (event) {
-    if (event.target.className === 'moveup-button') {
-        move('up', event.target.parentElement)
-    } else if (event.target.className === 'movedown-button') {
-        move('down', event.target.parentElement)
-    } else {
-        // nothing
-    }
-})
+// BUTTON - EDIT FUNCTION
+
+/*document.getElementById("editButton").addEventListener("click", function editContent() {
+    newTodo.contentEditable = true;
+});*/
