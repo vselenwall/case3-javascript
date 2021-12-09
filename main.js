@@ -147,3 +147,15 @@ function validateInput() {
         }
     }
 };
+
+// BUTTON - EDIT FUNCTION 
+
+document.getElementById("todolist").addEventListener("click", function (event) {
+    if (event.target.className === 'moveup-button') {
+        move('up', event.target.parentElement)
+    } else if (event.target.className === 'movedown-button') {
+        move('down', event.target.parentElement)
+    } else {
+        // nothing
+    }
+})
